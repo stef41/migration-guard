@@ -1,0 +1,39 @@
+name: 'Migration Guard'
+description: 'Database migration safety checker. Analyzes SQL migrations for dangerous operations like data loss, long locks, and backward incompatibility.'
+branding:
+  icon: 'database'
+  color: 'orange'
+
+inputs:
+  migrations-dir:
+    description: 'Directory containing migration files'
+    required: false
+    default: 'db/migrations'
+  database-type:
+    description: 'Database type: postgres, mysql, sqlite'
+    required: false
+    default: 'postgres'
+  fail-on-warnings:
+    description: 'Fail if any warnings are found'
+    required: false
+    default: 'false'
+  fail-on-errors:
+    description: 'Fail if any errors (dangerous operations) are found'
+    required: false
+    default: 'true'
+  check-backward-compat:
+    description: 'Check for backward-incompatible changes'
+    required: false
+    default: 'true'
+
+outputs:
+  errors-count:
+    description: 'Number of dangerous operations detected'
+  warnings-count:
+    description: 'Number of warnings detected'
+  report:
+    description: 'JSON report of all findings'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
