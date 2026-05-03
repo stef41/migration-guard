@@ -1,5 +1,5 @@
 name: 'Migration Guard'
-description: 'Database migration safety checker. Analyzes SQL migrations for dangerous operations like data loss, long locks, and backward incompatibility.'
+description: 'Database migration safety checker. Detects data loss, long locks, and backward incompatibility.'
 branding:
   icon: 'database'
   color: 'orange'
